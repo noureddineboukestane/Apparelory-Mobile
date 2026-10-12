@@ -17,7 +17,9 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.22.2'
           channel: 'stable'
+          cache: true
           
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -28,7 +30,7 @@ jobs:
         run: pip install flet reportlab
         
       - name: Build APK
-        run: flet build apk
+        run: flet build apk --skip-flutter-check
         
       - name: Upload APK
         uses: actions/upload-artifact@v4
